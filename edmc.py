@@ -2,6 +2,7 @@
 #
 
 import tkinter as tk
+from tkinter import ttk
 
 appname = "edmclikeradiobuttons"
 applongname = "EDMC-like Radio Buttons"
@@ -47,7 +48,7 @@ class AppWindow:
         pass
 
 
-class PreferencesDialog:
+class PreferencesDialog(tk.Toplevel):
 
     def __init__(self, parent, callback):
         tk.Toplevel.__init__(self, parent)
@@ -63,8 +64,39 @@ class PreferencesDialog:
 
         self.resizable(tk.FALSE, tk.FALSE)
 
-        # appearances_frame = nb.Frame(notebook)
+        self.PADX = 10
+        self.PADY = 2
+        self.BUTTONX = 12
 
+        frame = ttk.Frame(self)
+        notebook = ttk.Notebook(frame)
+
+        appearance_frame = ttk.Frame(notebook)
+        appearance_frame.columnconfigure(2, weight=1)
+
+        tk.Label(appearance_frame, text='Theme').grid(columnspan=3, padx=self.PADX, sticky=tk.W, row=1)
+        ttk.Radiobutton(appearance_frame, text='Default').grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=2)
+        ttk.Radiobutton(appearance_frame, text='Dark').grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=3)
+        ttk.Radiobutton(appearance_frame, text='Transparent').grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=4)
+        notebook.add(appearance_frame, text='Appearance')
+
+        buttonframe = ttk.Frame(frame)
+        buttonframe.grid(padx=self.PADX, pady=self.PADY, sticky=tk.NSEW)
+        buttonframe.columnconfigure(0, weight=1)
+        ttk.Label(buttonframe).grid(row=0, column=0)
+        button = ttk.Button(buttonframe, text='OK', command=self.apply)
+        button.grid(row=0, column=1, sticky=tk.E)
+        button.bind("<Return>", lambda event: self.apply())
+        self.protocol("WM_DELETE_WINDOW", self._destroy)
+
+    def apply(self):
+        if self.callback:
+            self.callback()
+
+        self._destroy()
+
+    def _destroy(self):
+        self.destroy()
 
 
 def main():
