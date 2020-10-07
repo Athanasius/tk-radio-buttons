@@ -69,15 +69,19 @@ class PreferencesDialog(tk.Toplevel):
         self.BUTTONX = 12
 
         frame = ttk.Frame(self)
+        frame.grid(sticky=tk.NSEW)
+
         notebook = ttk.Notebook(frame)
+        notebook.pack()
 
         appearance_frame = ttk.Frame(notebook)
+        appearance_frame.grid(sticky=tk.NSEW)
         appearance_frame.columnconfigure(2, weight=1)
 
         tk.Label(appearance_frame, text='Theme').grid(columnspan=3, padx=self.PADX, sticky=tk.W, row=1)
-        ttk.Radiobutton(appearance_frame, text='Default').grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=2)
-        ttk.Radiobutton(appearance_frame, text='Dark').grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=3)
-        ttk.Radiobutton(appearance_frame, text='Transparent').grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=4)
+        ttk.Radiobutton(appearance_frame, text='Default', value=0).grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=2)
+        ttk.Radiobutton(appearance_frame, text='Dark', value=1).grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=3)
+        ttk.Radiobutton(appearance_frame, text='Transparent', value=2).grid(columnspan=3, padx=self.BUTTONX, sticky=tk.W, row=4)
         notebook.add(appearance_frame, text='Appearance')
 
         buttonframe = ttk.Frame(frame)
@@ -88,6 +92,10 @@ class PreferencesDialog(tk.Toplevel):
         button.grid(row=0, column=1, sticky=tk.E)
         button.bind("<Return>", lambda event: self.apply())
         self.protocol("WM_DELETE_WINDOW", self._destroy)
+
+        self.parent.update_idletasks()
+        self.wait_visibility()
+        self.grab_set()
 
     def apply(self):
         if self.callback:
