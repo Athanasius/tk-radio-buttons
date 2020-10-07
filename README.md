@@ -96,4 +96,4 @@ its libraries.
         
 Now use the `File` menu and select the `Prefs` option to open the additional
 window and observe the state of the radio buttons.  You should see something
-like tk-radio-buttons_edmc-with-python_exe-dpiAware-001.png shows.
+like tk-radio-buttons_python-exe_dpiAware_edmc.png shows.
