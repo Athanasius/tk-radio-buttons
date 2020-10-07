@@ -93,9 +93,9 @@ class PreferencesDialog(tk.Toplevel):
         button.bind("<Return>", lambda event: self.apply())
         self.protocol("WM_DELETE_WINDOW", self._destroy)
 
-        self.parent.update_idletasks()
-        self.wait_visibility()
-        self.grab_set()
+        # self.parent.update_idletasks()
+        # self.wait_visibility()
+        # self.grab_set()
 
     def apply(self):
         if self.callback:
