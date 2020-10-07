@@ -51,7 +51,7 @@ window that has a `File` menu with a `Prefs` entry that then opens a new
 `ttk.TopLevel` window to contain a `ttk.Notebook` which then contains a frame
 with the test `ttk.RadioButton` elements.
 
-As the bug depengs on `dpiAware` being true you can't just run the script with
+As the bug depends on `dpiAware` being true you can't just run the script with
 a normal python.exe.  Instead you will need to:
 
 1. Make a copy of python.exe into your clone of this project.
@@ -96,4 +96,4 @@ its libraries.
         
 Now use the `File` menu and select the `Prefs` option to open the additional
 window and observe the state of the radio buttons.  You should see something
-like tk-radio-buttons_python-exe_dpiAware_edmc.png shows.
+like `tk-radio-buttons_python-exe_dpiAware_edmc.png` shows.
