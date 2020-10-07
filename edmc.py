@@ -72,7 +72,7 @@ class PreferencesDialog(tk.Toplevel):
         frame.grid(sticky=tk.NSEW)
 
         notebook = ttk.Notebook(frame)
-        notebook.pack()
+        notebook.grid(padx=10, pady=10, sticky=tk.NSEW)
 
         appearance_frame = ttk.Frame(notebook)
         appearance_frame.grid(sticky=tk.NSEW)
