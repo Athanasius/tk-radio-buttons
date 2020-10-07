@@ -75,6 +75,9 @@ a normal python.exe.  Instead you will need to:
 
     to the `<windowsSettings>` section.
 
+    `mt.exe` comes from the [Windows SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-10-sdk/),
+    such as [Windows 10 SDK, version 2004 (10.0.19041.0)](https://go.microsoft.com/fwlink/p/?linkid=2120843).
+   
 1. Now you need to set PYTHONPATH so that your copied python.exe can find
 its libraries.
     1. Run the actually installed python.exe (so change directory out of
